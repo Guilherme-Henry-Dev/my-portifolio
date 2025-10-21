@@ -1,5 +1,5 @@
 import github from '../../assets/img/github.png'
-import agencia from '../../assets/img/agencia.png'
+import agencia from '../../assets/img/urban-roots-coffe.png'
 import pokedex from '../../assets/img/pokedex.png'
 
 interface Projeto {
@@ -16,12 +16,12 @@ export default function Projects() {
   const projetos: Projeto[] = [
     {
       id: 1,
-      name: "Agência - XPTO",
-      desc: "Landing Page responsiva para Agência XPTO, com design limpo e carrossel de projetos, desenvolvida em HTML, CSS e JavaScript puro para oferecer performance e estética alinhadas.",
-      stack: "HTML5, CSS3, JavaScript (vanilla).",
+      name: "Urban Roots Coffe",
+      desc: "Site de apresentação de marca e loja de café, com interface moderna, design responsivo e navegação fluida. O usuário pode explorar produtos, saber mais sobre a marca e seus espaços.",
+      stack: "React, TypeScript, TailwindCSS.",
       img: agencia,
-      link: "https://guilherme-henry-dev.github.io/Landing-Page-Agencia-XPTO",
-      repo: "https://github.com/Guilherme-Henry-Dev/Landing-Page-Agencia-XPTO"
+      link: "https://urban-roots-coffe.vercel.app",
+      repo: "https://github.com/Guilherme-Henry-Dev/urban-roots-coffe"
     },
     {
       id: 2,
