@@ -27,7 +27,7 @@ export default function Skills() {
         Stack & Habilidades
       </motion.h2>
 
-      <Tabs setActiveTab={activeTab} setActiveTab={setActiveTab} />
+      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <SkillGrid skills={categories[activeTab]} />
 
