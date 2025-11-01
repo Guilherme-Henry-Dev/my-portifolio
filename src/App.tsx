@@ -1,25 +1,28 @@
-import Header from "../src/components/header/Header"
-import Hero from "../src/components/hero/Hero"
-import About from "../src/components/about/About"
-import Skills from "../src/components/skill/Skills"
-import Projects from "../src/components/project/Projects"
-import Contact from "../src/components/contacts/Contacts"
-import Footer from "../src/components/footer/Footer"
-import Services from "./components/serviços/Services"
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Services from "./pages/Services";
+import Projects from "./pages/Project";
+import ProjectDetails from "./pages/ProjectDetails";
+import Contact from "./pages/Contacts";
 
 export default function App() {
   return (
-    <div>
+    <div className=" bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300">
       <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Services/>
-        <Projects />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       <Footer />
     </div>
-  )
+  );
 }

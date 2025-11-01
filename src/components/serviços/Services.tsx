@@ -1,59 +1,32 @@
-import { FaCode, FaServer, FaPaintBrush, FaPalette } from "react-icons/fa"
+import { motion } from "framer-motion";
+import ServiceCard from "./ServicesCard.tsx";
+import { services } from "./data.tsx";
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 bg-white text-white">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-12 text-black">
-          O que eu posso <span className="text-blue-600">te oferecer?</span>
+    <section
+      id="services"
+      className="py-20 px-6 md:px-10 max-w-6xl mx-auto text-slate-900 dark:text-white"
+    >
+      <motion.div
+        className="text-center mb-14"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-blue-900 dark:text-blue-400">
+          O que eu posso <span className="text-blue-900 dark:text-blue-400">te oferecer?</span>
         </h2>
+        <p className="text-slate-900 dark:text-slate-300 max-w-2xl mx-auto text-lg">
+          Soluções que unem design e tecnologia para transformar ideias em experiências digitais com propósito, beleza e performance.
+        </p>
+      </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-900 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform">
-            <FaCode className="text-5xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-4">Desenvolvimento Web</h3>
-            <p className="text-gray-200 mb-6">
-              Criação de interfaces modernas, responsivas e otimizadas, que funcionam em qualquer dispositivo, garantindo performance e conversão.
-            </p>
-            <a href="#contact" className="bg-blue-400 text-gray-200 px-6 py-2 rounded-full hover:bg-green-400 transition">
-              Saiba mais
-            </a>
-          </div>
-
-          <div className="bg-gray-900 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform">
-            <FaServer className="text-5xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-4">Desenvolvimento Back-end</h3>
-            <p className="text-gray-200 mb-6">
-              Construção de sistemas robustos e seguros, processando dados com eficiência e garantindo escalabilidade para seus projetos.
-            </p>
-            <a href="#contact" className="bg-blue-400 text-gray-200 px-6 py-2 rounded-full hover:bg-green-400 transition">
-              Saiba mais
-            </a>
-          </div>
-
-          <div className="bg-gray-900 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform">
-            <FaPaintBrush className="text-5xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-4">Design Gráfico</h3>
-            <p className="text-gray-200 mb-6">
-              Desenvolvimento de identidades visuais, logos e materiais gráficos criativos para fortalecer sua marca e atrair clientes.
-            </p>
-            <a href="#contact" className="bg-blue-400 text-gray-200 px-6 py-2 rounded-full hover:bg-green-400 transition">
-              Saiba mais
-            </a>
-          </div>
-
-          <div className="bg-gray-900 rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform">
-            <FaPalette className="text-5xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-4">UI/UX Design</h3>
-            <p className="text-gray-200 mb-6">
-              Criação de experiências digitais envolventes, focadas em usabilidade, estética moderna e interação intuitiva para o usuário.
-            </p>
-            <a href="#contact" className="bg-blue-400 text-gray-200 px-6 py-2 rounded-full hover:bg-green-400 transition">
-              Saiba mais
-            </a>
-          </div>
-        </div>
+      <div className="grid md:grid-cols-2 gap-8">
+        {services.map((service, index) => (
+          <ServiceCard key={index} service={service} index={index} />
+        ))}
       </div>
     </section>
-  )
+  );
 }

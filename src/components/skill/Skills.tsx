@@ -1,37 +1,50 @@
-import { SkillCard } from "./SkillCard";
-import { SiHtml5, SiCss3, SiJavascript, SiReact, SiTypescript, SiTailwindcss, SiGithub,SiAdobeillustrator, SiAdobephotoshop, SiPostgresql, SiJest, SiNodedotjs} from "react-icons/si";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Tabs from "./Tabs.tsx";
+import SkillGrid from "./SkillGrid.tsx";
+import FocusSection from "./FocusSection.tsx";
+import SoftSkills from "./SoftSkills.tsx";
+import { frontend, backend, conceitos, exploracao } from "./data.tsx";
 
-function Skills() {
-  const skills = [
-    { name: "HTML", Icon: SiHtml5 },
-    { name: "CSS", Icon: SiCss3 },
-    { name: "JavaScript", Icon: SiJavascript },
-    { name: "React", Icon: SiReact },
-    { name: "TypeScript", Icon: SiTypescript },
-    { name: "Tailwind", Icon: SiTailwindcss },
-    { name: "Git/GitHub", Icon: SiGithub },
-    { name: "Jest", Icon: SiJest },
-    { name: "Adobe Illustrator", Icon: SiAdobeillustrator },
-    { name: "Adobe Photoshop", Icon: SiAdobephotoshop },
-    { name: "PostgreSQL", Icon: SiPostgresql },
-    { name: "Node.Js", Icon: SiNodedotjs },
-  ];
+export default function Skills() {
+  const [activeTab, setActiveTab] = useState<
+    "frontend" | "backend" | "conceitos" | "exploracao"
+  >("frontend");
+
+  const categories = { frontend, backend, conceitos, exploracao };
 
   return (
-    <section id="skills" className="py-20 max-w-6xl mx-auto px-6">
-      <h2 className="text-3xl font-bold text-center mb-10">
-        Minhas <span className="text-gray-900">Skills</span>
-      </h2>
-      <p className="text-center mb-10">
-        Habilidades sólidas em desenvolvimento web, criando soluções funcionais, modernas e criativas.
-      </p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {skills.map((skill, index) => (
-          <SkillCard key={index} name={skill.name} Icon={skill.Icon} />
-        ))}
+    <section
+      id="skills"
+      className="py-20 px-6 md:px-10 max-w-6xl mx-auto text-center text-slate-900 dark:text-white"
+    >
+      <motion.h2
+        className="text-3xl md:text-4xl font-bold mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        Stack & Habilidades
+      </motion.h2>
+
+      <Tabs setActiveTab={activeTab} setActiveTab={setActiveTab} />
+
+      <SkillGrid skills={categories[activeTab]} />
+
+      <div className="grid md:grid-cols-2 gap-6 mb-16 text-left">
+        <FocusSection
+          title="Foco Atual"
+          text="Tenho priorizado aprofundar conceitos avançados e aplicação prática desta stack nos projetos mais recentes."
+          tags={["React", "Tailwind", "TypeScript", "Node.js", "Banco de Dados"]}
+        />
+        <FocusSection
+          title="Foco em Exploração"
+          text="Linhas de estudo que completam minha atuação atual e mantêm o aprendizado contínuo sempre ativo."
+          tags={["OpenAI", "Python", "N8N", "Automação", "Desenvolvimento Mobile"]}
+        />
       </div>
+
+      <SoftSkills />
     </section>
   );
 }
-
-export default Skills
