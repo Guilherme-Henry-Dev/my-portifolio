@@ -9,7 +9,7 @@ export default function Hero() {
       className="min-h-[85vh] flex items-center bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-500"
     >
       <div className="container mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-between gap-10">
-        
+
         <motion.div
           className="flex-1 text-center md:text-left"
           initial={{ opacity: 0, y: 30 }}
@@ -79,14 +79,21 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <div className="relative group">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-900 via-blue-700 to-blue-400 blur-md opacity-30 group-hover:opacity-60 transition duration-300"></div>
+            {/* Glow suave e dinâmico */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-900 via-blue-600 to-blue-400 blur-2xl opacity-40 group-hover:opacity-70 transition-all duration-500 scale-110"></div>
+
+            {/* Anel de contorno interno */}
+            <div className="absolute inset-1 rounded-full border-4 border-blue-700 opacity-60 group-hover:opacity-80 transition-all duration-500"></div>
+
+            {/* Imagem principal (maior agora) */}
             <img
               src={avatar}
-              alt='Foto de Guilherme Henry, desenvolvedor Full-Stack'
-              className="relative z-10 w-74 h-74 md:w-80 md:h-80 rounded-full object-cover border-4 border-blue-900 shadow-lg group-hover:scale-[1.03] transition-transform duration-300"
+              alt="Foto de Guilherme Henry, desenvolvedor Full-Stack"
+              className="relative z-10 w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full object-cover shadow-xl border-2 border-blue-800 group-hover:scale-105 transition-transform duration-500 ease-out"
             />
           </div>
         </motion.div>
+
       </div>
     </section>
   );
